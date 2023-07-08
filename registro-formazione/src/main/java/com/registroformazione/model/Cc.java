@@ -1,0 +1,33 @@
+package com.registroformazione.model;
+
+import java.util.List;
+
+import org.apache.commons.lang3.builder.ToStringExclude;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@Entity
+@NoArgsConstructor
+public class Cc {
+@Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+private Integer id;
+private String nome;
+
+@OneToMany(mappedBy = "cc", fetch = FetchType.EAGER)
+@ToStringExclude
+@JsonBackReference
+private List<Persona> personeList;
+}

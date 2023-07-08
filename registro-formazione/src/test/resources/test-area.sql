@@ -1,0 +1,1 @@
+DELETE FROM aree WHERE id>0
